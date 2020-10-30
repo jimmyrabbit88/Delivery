@@ -1,0 +1,39 @@
+@startuml
+skinparam classAttributeIconSize 0
+class parcel{
+deliver(): void
+}
+abstract class Delivery{
+- deliveryType: WayOfDelivery
+- message: String
+
+abstract deliver(): void
+}
+
+interface WayOfDelivery{
+- howToDeliver()
+}
+
+class postbox{
+- howToDeliver()
+}
+
+class motel{
+- howToDeliver()
+}
+
+class signature{
+- howToDeliver()
+}
+
+class noDrop{
+- howToDeliver()
+}
+parcel o-- Delivery
+Delivery o-- WayOfDelivery
+WayOfDelivery <|.. postbox
+WayOfDelivery <|.. motel
+WayOfDelivery <|.. signature
+WayOfDelivery <|.. noDrop
+
+@enduml
